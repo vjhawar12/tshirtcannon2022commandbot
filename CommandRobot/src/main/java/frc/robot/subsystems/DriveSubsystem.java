@@ -32,6 +32,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   private Gyro gyro; 
 
+
   public final MedianFilter mFilter = new MedianFilter(Constants.medianFilterSamples); 
   public final AnalogInput aInput = new AnalogInput(Constants.kUltrasonicPort); 
 
@@ -58,6 +59,10 @@ public class DriveSubsystem extends SubsystemBase {
 
   public void drive(double fwdMove, double rot) {
     drive.arcadeDrive(fwdMove, rot);
+  }
+
+  public void stop() {
+    drive.stopMotor();
   }
 
   public void resetEncoders() {
