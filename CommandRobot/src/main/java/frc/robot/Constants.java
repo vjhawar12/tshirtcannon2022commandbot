@@ -29,6 +29,13 @@ public final class Constants {
     public static final int kRightMotorPort = 1;
     public static final int kUltrasonicPort = 0;
     public static final int medianFilterSamples = 10;
+   
+    public static final int frontLeftMotorPort = 1; 
+    public static final int frontRightMotorPort = 2; 
+    public static final int backLeftMotorPort = 3; 
+    public static final int backRightMotorPort = 4; 
+    public static final int rightJoystickPort = 5;
+    public static final int leftJoystickPort = 6;  
 }
 
 
