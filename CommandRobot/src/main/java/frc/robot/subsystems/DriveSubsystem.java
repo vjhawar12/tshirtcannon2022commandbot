@@ -1,7 +1,3 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -10,17 +6,17 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-import edu.wpi.first.wpilibj.motorcontrol.PWMTalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import frc.robot.Constants; 
 import edu.wpi.first.math.filter.MedianFilter;
 
 
 public class DriveSubsystem extends SubsystemBase {
-  private PWMTalonSRX backleftmotor; 
-  private PWMTalonSRX backrightmotor; 
-  private PWMTalonSRX frontleftmotor;
-  private PWMTalonSRX frontrightmotor; 
+  private VictorSPX backLeftMotor; 
+  private VictorSPX backrightmotor; 
+  private VictorSPX frontleftmotor;
+  private VictorSPX frontrightmotor; 
 
   private MotorControllerGroup right; 
   private MotorControllerGroup left; 
@@ -31,7 +27,6 @@ public class DriveSubsystem extends SubsystemBase {
   private Encoder rightEncoder; 
 
   private Gyro gyro; 
-
 
   public final MedianFilter mFilter = new MedianFilter(Constants.medianFilterSamples); 
   public final AnalogInput aInput = new AnalogInput(Constants.kUltrasonicPort); 
@@ -79,7 +74,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public double getHeading() {
-    return Math.IEEEremainder(gyro.getAngle(), 360) * (Constants.gyroReversed ? -1.0 : 1.0);
+    return -1 * Math.IEEEremainder(gyro.getAngle(), 360); 
   }
 
   @Override
